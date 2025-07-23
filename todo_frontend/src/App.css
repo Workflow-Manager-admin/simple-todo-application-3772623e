@@ -6,8 +6,10 @@
   --text-primary: #282c34;
   --text-secondary: #61dafb;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --button-bg: #4F8EF7;    /* primary */
+  --button-text: #fff;
+  --accent-color: #2ED573;
+  --secondary-color: #F7B32B;
 }
 
 [data-theme="dark"] {
@@ -84,21 +86,60 @@
   transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- Todo List Styles --- */
+.todo-item.completed span[data-testid="todo-title"] {
+  text-decoration: line-through;
+  color: var(--border-color) !important;
+  opacity: 0.7;
+}
+
+.todo-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color);
+  margin-right: 0.6em;
+  cursor: pointer;
+}
+
+.btn[disabled] {
+  filter: grayscale(0.53);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover:enabled {
+  background: var(--accent-color);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 /* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+@media (max-width: 600px) {
+  main {
+    border-radius: 6px !important;
+    padding: 1em !important;
+  }
+  .todo-item {
+    padding: 0.5em 0.5em !important;
+    font-size: .98em !important;
+  }
+  .btn, input[type=text] {
+    font-size: 0.97em !important;
+    padding: 0.7em 0.9em !important;
+    border-radius: 6px !important;
   }
 }
